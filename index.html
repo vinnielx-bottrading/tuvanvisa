@@ -247,7 +247,19 @@
   .stage-map .worldmap .hlt:hover path,
   .stage-map .worldmap path.hlt:hover{ fill:var(--teal); }
   .hk-marker{ fill:var(--gold); stroke:var(--ocean); stroke-width:1; cursor:pointer; }
+  .isle-marker{ fill:#c0392b; stroke:var(--ocean); stroke-width:.8; }
   .hk-marker:hover{ fill:var(--teal); }
+  .map-tagline{
+    position:absolute; left:24px; top:20px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:600;
+    font-size:clamp(16px,2.4vw,22px);
+    color:var(--teal); opacity:.4;
+    pointer-events:none; white-space:nowrap;
+    letter-spacing:.01em;
+  }
+  @media(max-width:600px){
+    .map-tagline{ font-size:14px; left:14px; top:12px; }
+  }
   .map-hint{
     position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
     font-size:12px; color:var(--muted); background:var(--sand-card);
@@ -575,6 +587,7 @@
   <aside class="side-nav" id="sideNav" aria-label="Danh sách quốc gia"></aside>
   <section class="stage">
     <div class="stage-map" id="stageMap">
+      <div class="map-tagline">Hoàng Sa, Trường Sa là của Việt Nam.</div>
       <div class="map-hint">Chọn một quốc gia bên trái hoặc bấm trực tiếp lên bản đồ</div>
       <div class="map-tooltip" id="mapTooltip"></div>
       <svg version="1.1"
@@ -975,6 +988,8 @@
     <path id="zw" d="M468.52,578.226l7.755,8.757l5.946,1.513l3.984-6.248l-0.312-8.281l-6.465-3.337l-2.431,1.098l-3.62,5.524l-5.014-0.053L468.52,578.226L468.52,578.226z"/>
 </g>
 <circle id="hk" class="hk-marker" cx="676" cy="459" r="3.2"></circle>
+<circle id="hoangsa" class="isle-marker" cx="676" cy="507" r="2.6"></circle>
+<circle id="truongsa" class="isle-marker" cx="676" cy="527" r="2.6"></circle>
 </svg>
     </div>
     <div class="stage-detail" id="stageDetail" hidden></div>
@@ -1947,6 +1962,15 @@ function wireMap(){
         el.addEventListener('mouseleave', hideTooltip);
       });
     });
+  });
+
+  const isleLabels = { hoangsa:'Quần đảo Hoàng Sa', truongsa:'Quần đảo Trường Sa' };
+  Object.keys(isleLabels).forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('mouseenter', (e) => showTooltip(e, isleLabels[id]));
+    el.addEventListener('mousemove', (e) => moveTooltip(e));
+    el.addEventListener('mouseleave', hideTooltip);
   });
 }
 function showTooltip(e, label){
