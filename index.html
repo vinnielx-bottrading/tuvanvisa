@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bảng giá & thủ tục Visa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e2e2f;
+    --teal:#0b3c3e;
+    --teal-deep:#082a2c;
+    --navy:#132540;
+    --gold:#c9a84c;
+    --gold-soft:#e7d9a8;
+    --sand:#f4f0e6;
+    --sand-card:#ffffff;
+    --line:#e2ddcd;
+    --muted:#5c6b6a;
+    --amber-bg:#fbf3df;
+    --amber-line:#e7d29c;
+    --radius: 4px;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --sand:#101c1c;
+      --sand-card:#16302f;
+      --ink:#eef2ee;
+      --line:#254140;
+      --muted:#a9bdba;
+      --amber-bg:#2b2411;
+      --amber-line:#4f4020;
+    }
+  }
+  :root[data-theme="dark"]{
+    --sand:#101c1c;
+    --sand-card:#16302f;
+    --ink:#eef2ee;
+    --line:#254140;
+    --muted:#a9bdba;
+    --amber-bg:#2b2411;
+    --amber-line:#4f4020;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(160deg,var(--teal) 0%,var(--teal-deep) 78%);
+    color:#fdfbf4;
+    padding:72px 24px 100px;
+    overflow:hidden;
+  }
+  .hero-fx{ position:absolute; inset:0; pointer-events:none; }
+  .flight-path{ position:absolute; inset:0; width:100%; height:100%; opacity:.4; overflow:visible; }
+  .flight-path path{
+    fill:none; stroke:var(--gold-soft); stroke-width:1.4; stroke-linecap:round;
+    stroke-dasharray:5 9; stroke-dashoffset:0;
+    opacity:.4;
+  }
+  .plane-wrap{
+    position:absolute; top:0; left:0; width:20px; height:20px;
+    offset-path: path("M -40 300 C 220 210, 470 400, 760 250 S 1140 90, 1300 130");
+    offset-rotate:auto; offset-distance:0%;
+    opacity:0;
+    animation-name: fly;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .plane-wrap svg{ width:100%; height:100%; transform:rotate(90deg); display:block; }
+  .plane-1{ width:23px; height:23px; color:var(--gold-soft); animation-duration:5.2s; animation-delay:0s; }
+  .plane-2{ width:16px; height:16px; color:#9fd6c8; animation-duration:5.2s; animation-delay:1.3s; }
+  .plane-3{ width:20px; height:20px; color:#fdfbf4; animation-duration:5.2s; animation-delay:2.6s; }
+  .plane-4{ width:14px; height:14px; color:#e3b6a0; animation-duration:5.2s; animation-delay:3.9s; }
+  @keyframes fly{
+    0%{ offset-distance:0%; opacity:0; }
+    5%{ opacity:1; }
+    92%{ opacity:1; }
+    100%{ offset-distance:100%; opacity:0; }
+  }
+
+  .hero-inner{
+    max-width:1080px;
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+  .kicker{
+    display:flex; align-items:center; gap:9px;
+    font-size:13.5px; color:var(--gold-soft);
+    margin-bottom:30px;
+    opacity:0; animation: fade-up .6s ease-out .05s forwards;
+  }
+  .kicker-dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); flex:none; }
+  .hero h1{
+    font-size:clamp(34px,5.4vw,58px);
+    line-height:1.05;
+    max-width:780px;
+    opacity:0; animation: fade-up .7s ease-out .18s forwards;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-soft);
+  }
+  .hero p.lede{
+    margin-top:18px;
+    font-size:17px;
+    line-height:1.6;
+    max-width:600px;
+    color:#d9e6e1;
+    opacity:0; animation: fade-up .7s ease-out .32s forwards;
+  }
+  @keyframes fade-up{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+  .hero-meta{
+    display:flex;
+    gap:36px;
+    margin-top:44px;
+    flex-wrap:wrap;
+    opacity:0; animation: fade-up .7s ease-out .48s forwards;
+  }
+  .hero-meta div{border-left:2px solid rgba(255,255,255,.25); padding-left:14px;}
+  .hero-meta .num{font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--gold-soft);}
+  .hero-meta .lbl{font-size:13px; color:#c6d6d0; margin-top:2px;}
+
+  @media (prefers-reduced-motion: reduce){
+    .plane-wrap{ display:none; }
+    .kicker, .hero h1, .hero p.lede, .hero-meta{
+      animation:none !important; opacity:1 !important; transform:none !important;
+    }
+  }
+
+  /* ---------- NAV ---------- */
+  .nav-wrap{
+    position:sticky; top:0; z-index:50;
+    background:var(--sand);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:1080px;
+    margin:0 auto;
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    padding:14px 24px;
+    scrollbar-width:none;
+  }
+  .nav::-webkit-scrollbar{display:none;}
+  .nav button{
+    flex:none;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--sand-card);
+    color:var(--muted);
+    cursor:pointer;
+    transition:all .15s ease;
+    white-space:nowrap;
+  }
+  .nav button.active{
+    background:var(--teal);
+    border-color:var(--teal);
+    color:#fdfbf4;
+  }
+  .nav button:hover:not(.active){ border-color:var(--teal); color:var(--ink); }
+
+  /* ---------- MAIN ---------- */
+  main{max-width:1080px; margin:0 auto; padding:48px 24px 100px;}
+  .continent-section{margin-bottom:64px; scroll-margin-top:74px;}
+  .continent-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:22px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:12px;
+  }
+  .continent-head h2{font-size:26px;}
+  .continent-head .count{font-size:13px; color:var(--muted);}
+
+  .country-card{
+    background:var(--sand-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .country-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:16px 18px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .flag{
+    width:40px; height:28px;
+    border-radius:2px;
+    background-size:cover;
+    background-position:center;
+    flex:none;
+    box-shadow:0 0 0 1px rgba(0,0,0,.08);
+  }
+  .country-row .name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:18px;
+    flex:1 1 auto;
+    min-width:120px;
+  }
+  .country-row .badge-detail{
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--teal);
+    background:var(--gold-soft);
+    padding:3px 8px;
+    border-radius:999px;
+    letter-spacing:.02em;
+    flex:none;
+  }
+  .country-row .price-preview{
+    font-size:14px;
+    color:var(--muted);
+    text-align:right;
+    flex:none;
+  }
+  .country-row .price-preview b{ color:var(--ink); font-weight:600; }
+  .caret{
+    width:18px; height:18px;
+    flex:none;
+    transition:transform .2s ease;
+    color:var(--muted);
+  }
+  .country-card.open .caret{ transform:rotate(180deg); }
+
+  .country-detail{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    border-top:1px solid transparent;
+  }
+  .country-card.open .country-detail{
+    border-top:1px solid var(--line);
+  }
+
+  .detail-inner{ padding:18px 18px 22px; display:grid; gap:22px; }
+  @media(min-width:760px){
+    .detail-inner.with-procedure{ grid-template-columns: 1fr; }
+    .detail-inner{ grid-template-columns: 1.1fr 1fr; }
+  }
+
+  table.price-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  table.price-table th{
+    text-align:left;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.03em;
+    color:#fdfbf4;
+    background:var(--navy);
+    padding:9px 10px;
+  }
+  table.price-table th:first-child{ border-radius:3px 0 0 0; }
+  table.price-table th:last-child{ border-radius:0 3px 0 0; text-align:right;}
+  table.price-table td{
+    padding:9px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  table.price-table td:last-child{ text-align:right; font-weight:600; white-space:nowrap; }
+  table.price-table tr:last-child td{ border-bottom:none; }
+  table.price-table td.time{ color:var(--muted); font-size:13px; }
+
+  .docs{
+    background:var(--sand);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:14px 16px;
+  }
+  .docs h4{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.03em;
+    color:var(--muted);
+    margin:0 0 10px;
+  }
+  .docs ul{ margin:0; padding:0; list-style:none; }
+  .docs li{
+    font-size:13.5px;
+    line-height:1.55;
+    padding-left:16px;
+    position:relative;
+    margin-bottom:7px;
+  }
+  .docs li::before{
+    content:"—";
+    position:absolute; left:0; top:0;
+    color:var(--gold);
+  }
+  .docs .note{
+    margin-top:10px;
+    font-size:12.5px;
+    color:var(--muted);
+    font-style:italic;
+  }
+
+  /* ---------- DETAILED PROCEDURE ---------- */
+  .proc-wrap{ grid-column: 1 / -1; }
+  .proc-topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .proc-source{
+    font-size:11.5px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .proc-source .dot2{ width:5px;height:5px;border-radius:50%; background:var(--gold); flex:none;}
+  .variant-tabs{ display:flex; gap:6px; }
+  .variant-tabs button{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    padding:6px 13px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--sand-card);
+    color:var(--muted);
+    cursor:pointer;
+  }
+  .variant-tabs button.active{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:#fdfbf4;
+  }
+  .proc-time{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:var(--ink);
+    background:var(--gold-soft);
+    padding:6px 12px;
+    border-radius:3px;
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  .proc-time span.lbl{ font-weight:500; color:var(--teal); opacity:.8; }
+
+  .proc-grid{
+    display:grid;
+    gap:18px;
+  }
+  @media(min-width:900px){
+    .proc-grid.cols-3{ grid-template-columns: repeat(3, 1fr); }
+    .proc-grid.cols-2{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .proc-section{
+    background:var(--sand-card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:16px 16px 6px;
+  }
+  .proc-section > h5{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:var(--teal);
+    margin:0 0 12px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .proc-item{
+    display:flex;
+    gap:10px;
+    padding-bottom:12px;
+    margin-bottom:12px;
+    border-bottom:1px dashed var(--line);
+  }
+  .proc-item:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:2px; }
+  .proc-num{
+    flex:none;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--sand);
+    border:1px solid var(--line);
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted);
+    display:flex; align-items:center; justify-content:center;
+    margin-top:1px;
+  }
+  .proc-body{ flex:1; min-width:0; }
+  .proc-main{ font-size:13.5px; line-height:1.5; }
+  .proc-tag{
+    display:inline-block;
+    font-size:10px;
+    font-weight:700;
+    color:var(--muted);
+    background:var(--sand);
+    border:1px solid var(--line);
+    padding:1px 6px;
+    border-radius:3px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+  .proc-subs{ margin:6px 0 0; padding:0; list-style:none; }
+  .proc-subs li{
+    font-size:12.5px;
+    line-height:1.55;
+    color:var(--muted);
+    padding-left:13px;
+    position:relative;
+    margin-bottom:3px;
+  }
+  .proc-subs li::before{ content:"•"; position:absolute; left:0; color:var(--gold); }
+  .proc-subs .sub-head{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink);
+    margin:6px 0 2px;
+  }
+
+  .proc-group-label{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    color:#fdfbf4;
+    background:var(--teal);
+    padding:3px 9px;
+    border-radius:3px;
+    margin-bottom:10px;
+  }
+
+  .proc-notes{
+    grid-column: 1 / -1;
+    background:var(--amber-bg);
+    border:1px solid var(--amber-line);
+    border-radius:4px;
+    padding:16px 18px;
+    margin-top:18px;
+  }
+  .proc-notes h5{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:#7a5c17;
+    margin:0 0 10px;
+  }
+  .proc-notes ul{ margin:0; padding:0; list-style:none; }
+  .proc-notes li{
+    font-size:13px;
+    line-height:1.6;
+    padding-left:15px;
+    position:relative;
+    margin-bottom:7px;
+    color:#4a3c14;
+  }
+  .proc-notes li::before{ content:"!"; position:absolute; left:0; top:0; font-weight:800; color:#a8811f; }
+  .proc-notes li:last-child{ margin-bottom:0; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--teal-deep);
+    color:#d9e6e1;
+    padding:40px 24px;
+  }
+  .footer-inner{
+    max-width:1080px; margin:0 auto;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
+    font-size:14px;
+  }
+  .footer-inner strong{ color:#fdfbf4; font-family:'Fraunces',serif; font-size:17px; font-weight:600; }
+  .footer-inner .col{ min-width:220px; line-height:1.8; }
+
+  @media(max-width:600px){
+    .hero{padding:44px 18px 70px;}
+    .hero-meta{gap:22px;}
+    main{padding:36px 16px 70px;}
+    .country-row .name{font-size:16px;}
+    .country-row .badge-detail{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-fx" aria-hidden="true">
+    <svg class="flight-path" viewBox="0 0 1300 500" preserveAspectRatio="none">
+      <path d="M -40 300 C 220 210, 470 400, 760 250 S 1140 90, 1300 130"/>
+    </svg>
+    <div class="plane-wrap plane-1">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 2v1.5l3.5-1 3.5 1V21l-2.5-2v-5.5l8 2.5z" fill="currentColor"/></svg>
+    </div>
+    <div class="plane-wrap plane-2">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 2v1.5l3.5-1 3.5 1V21l-2.5-2v-5.5l8 2.5z" fill="currentColor"/></svg>
+    </div>
+    <div class="plane-wrap plane-3">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 2v1.5l3.5-1 3.5 1V21l-2.5-2v-5.5l8 2.5z" fill="currentColor"/></svg>
+    </div>
+    <div class="plane-wrap plane-4">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 2v1.5l3.5-1 3.5 1V21l-2.5-2v-5.5l8 2.5z" fill="currentColor"/></svg>
+    </div>
+  </div>
+  <div class="hero-inner">
+    <div class="kicker"><span class="kicker-dot"></span>Cẩm nang chuẩn bị hồ sơ visa</div>
+    <h1>Bảng giá visa <em>và</em> những gì bạn cần chuẩn bị.</h1>
+    <p class="lede">Tổng hợp chi phí, thời gian xử lý và hồ sơ theo từng quốc gia. Các mục có nhãn <strong>"Hồ sơ chi tiết"</strong> lấy theo đúng quy định thủ tục nộp hồ sơ thực tế — các mục còn lại là hồ sơ tham khảo chung.</p>
+    <div class="hero-meta">
+      <div><div class="num" data-count="5">0</div><div class="lbl">Châu lục</div></div>
+      <div><div class="num" data-count="30" data-suffix="+">0</div><div class="lbl">Quốc gia & vùng lãnh thổ</div></div>
+      <div><div class="num" data-count="13">0</div><div class="lbl">Quốc gia có hồ sơ chi tiết đầy đủ</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav" id="nav"></div>
+</div>
+
+<main id="main"></main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="col">
+      <strong>Cẩm nang visa</strong><br>
+      Cập nhật theo quy định thủ tục nộp hồ sơ mới nhất.
+    </div>
+    <div class="col">
+      Giá và hồ sơ tham khảo, có thể thay đổi theo thời điểm và quy định của Lãnh sự quán/Đại sứ quán.
+    </div>
+  </div>
+</footer>
+
+<script>
+const fmt = n => n.toLocaleString('vi-VN') + 'đ';
+
+/* ============ GENERIC (non-detailed) DOC TIERS ============ */
+const DOCS = {
+  standard: [
+    "Hộ chiếu còn hạn ít nhất 6 tháng, còn ít nhất 2 trang trống",
+    "2 ảnh thẻ nền trắng theo chuẩn của lãnh sự quán",
+    "Đơn xin visa điền theo mẫu hoặc khai online",
+    "Chứng minh công việc: hợp đồng lao động / giấy phép kinh doanh",
+    "Chứng minh tài chính: sao kê ngân hàng 3–6 tháng gần nhất"
+  ],
+  hard: [
+    "Hộ chiếu còn hạn ít nhất 6 tháng + toàn bộ hộ chiếu cũ (nếu có)",
+    "Chứng minh tài chính rõ ràng: sổ tiết kiệm, sao kê lương, tài sản",
+    "Lịch trình chuyến đi chi tiết, vé máy bay & đặt phòng khách sạn tạm giữ chỗ",
+    "Bảo hiểm du lịch quốc tế (bắt buộc với khối Schengen)",
+    "Thư mời hoặc xác nhận đặt phòng/tour nếu đi du lịch tự túc",
+    "Phỏng vấn trực tiếp tại lãnh sự quán (Mỹ, một số trường hợp Canada/Úc)"
+  ],
+  easy: [
+    "Hộ chiếu còn hạn tối thiểu 6 tháng",
+    "Ảnh thẻ nền trắng theo yêu cầu",
+    "Form khai online hoặc tại quầy (nhiều nước hỗ trợ e-visa)",
+    "Vé máy bay khứ hồi và xác nhận khách sạn"
+  ],
+  business: [
+    "Thư mời từ đối tác/công ty tại nước sở tại (bản gốc hoặc bản scan có xác nhận)",
+    "Giấy giới thiệu công tác + quyết định cử đi công tác của công ty",
+    "Giấy phép kinh doanh của công ty tại Việt Nam",
+    "Hộ chiếu, ảnh thẻ, đơn xin visa theo mẫu",
+    "Chứng minh tài chính của cá nhân hoặc công ty bảo lãnh"
+  ]
+};
+const DOCS_LABEL = {
+  standard:"Hồ sơ cần chuẩn bị (tham khảo)",
+  hard:"Hồ sơ cần chuẩn bị (tham khảo — yêu cầu cao)",
+  easy:"Hồ sơ cần chuẩn bị (tham khảo — thủ tục đơn giản)",
+  business:"Hồ sơ cần chuẩn bị (tham khảo — visa công tác)"
+};
+const note = t => `<div class="note">${t}</div>`;
+
+/* ============ DETAILED PROCEDURES — ported verbatim from internal "Thủ tục xin Visa" reference ============ */
+
+// shared note block reused across CANADA (DL/CT) and CHÂU ÂU
+const NOTES_CA_EU = [
+  "Đương đơn có thể được yêu cầu nộp lại hộ chiếu gốc để kiểm tra.",
+  "Giấy tờ sao y công chứng: không quá 3 tháng, trình bày trên 1 mặt giấy A4, không cắt nhỏ.",
+  "Sao kê tài khoản ngân hàng: bản gốc, thực hiện không quá 1 tuần trước ngày nộp hồ sơ.",
+  "Việc thiếu giấy tờ có thể dẫn đến việc bị từ chối cấp visa. Tuy nhiên, nộp đầy đủ hồ sơ cũng không đồng nghĩa với việc được cấp visa — quyết định cuối cùng thuộc về LSQ/ĐSQ.",
+  "LSQ/ĐSQ có quyền yêu cầu bổ sung hồ sơ tùy từng trường hợp.",
+  "Tất cả giấy tờ được yêu cầu, chi phí và thời gian xét duyệt có thể thay đổi (không báo trước) theo quy định LSQ/ĐSQ tại thời điểm nộp hồ sơ."
+];
+
+function jobProofCanadaDL(){
+  return {
+    main:"Chứng minh công việc", tag:"Scan/File",
+    subs:[
+      {head:"Nếu là cán bộ – nhân viên:"},
+      "Đơn xin nghỉ phép (bản gốc)","Hợp đồng lao động","Bảng lương 3 tháng gần nhất",
+      {head:"Nếu là chủ doanh nghiệp:"},
+      "Giấy phép ĐKKD","Giấy nộp thuế 3 tháng gần nhất","Sao kê tài khoản công ty"
+    ]
+  };
+}
+function jobProofCanadaCT(){
+  return {
+    main:"Chứng minh công việc", tag:"Scan/File",
+    subs:[
+      {head:"Nếu là cán bộ – nhân viên:"},
+      "Hợp đồng lao động nêu rõ chức vụ, thời hạn","Sao kê tài khoản ngân hàng 3 tháng gần nhất",
+      "Quyết định cử đi công tác (thể hiện rõ công ty chi trả toàn bộ chuyến đi)","Sổ BHXH (có thể chụp VSSID)",
+      {head:"Nếu là chủ doanh nghiệp:"},
+      "Giấy phép ĐKKD","Giấy nộp thuế 3 tháng gần nhất","Sao kê tài khoản công ty"
+    ]
+  };
+}
+function financeProofStandard(extra){
+  return {
+    main:"Chứng minh tài chính", tag:"Scan/File",
+    subs:[
+      "Hồ sơ chứng minh công ty chi trả toàn bộ chi phí cho chuyến đi",
+      "Sao kê tài khoản ngân hàng 3 tháng gần nhất",
+      "Sổ tiết kiệm, chứng nhận sở hữu cổ phiếu, quyền sử dụng đất, quyền sở hữu bất động sản"
+    ]
+  };
+}
+
+const PROC_CANADA = {
+  label:"Canada",
+  variants:[
+    {
+      key:"dl", label:"Du lịch",
+      time:"20–30 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Danh mục hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ", tag:"Scan"},
+          {main:"Form thông tin cá nhân (theo mẫu)", tag:"File"},
+          {main:"Hộ khẩu hoặc giấy xác nhận thông tin cư trú (CT07/CT08)", tag:"Scan/File"},
+          {main:"CMND hoặc CCCD", tag:"Scan/File"},
+          {main:"Giấy đăng ký kết hôn (nếu đi cùng vợ/chồng)", tag:"Scan/File"},
+          {main:"Giấy khai sinh (nếu đi cùng bố/mẹ/con)", tag:"Scan/File"},
+          {main:"Giấy phép cư trú tại Việt Nam (nếu là người nước ngoài)", tag:"Scan/File"},
+          jobProofCanadaDL(),
+          financeProofStandard(),
+          {main:"Kế hoạch cho chuyến đi", tag:"Scan/File/Photo"},
+        ]
+      }],
+      notes: NOTES_CA_EU
+    },
+    {
+      key:"ct", label:"Công tác",
+      time:"20–30 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Danh mục hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ", tag:"Scan"},
+          {main:"Form thông tin cá nhân (theo mẫu)", tag:"File"},
+          {main:"Hộ khẩu hoặc giấy xác nhận thông tin cư trú (CT07/CT08)", tag:"Scan/File"},
+          {main:"CMND hoặc CCCD", tag:"Scan/File"},
+          {main:"Giấy đăng ký kết hôn (nếu đi cùng vợ/chồng)", tag:"Scan/File"},
+          {main:"Giấy khai sinh (nếu đi cùng bố/mẹ/con)", tag:"Scan/File"},
+          {main:"Giấy phép cư trú tại Việt Nam (nếu là người nước ngoài)", tag:"Scan/File"},
+          jobProofCanadaCT(),
+          financeProofStandard(),
+          {main:"Kế hoạch cho chuyến đi", tag:"Scan/File/Photo"},
+        ]
+      }],
+      notes: NOTES_CA_EU
+    }
+  ]
+};
+
+const PROC_CHAU_AU = {
+  label:"Châu Âu (Đức / Tây Ban Nha–Ý–Hà Lan–Áo / Pháp / Schengen / Romania)",
+  time:"5–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+  sections:[{
+    title:"Danh mục hồ sơ yêu cầu",
+    items:[
+      {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ", tag:"Scan"},
+      {main:"Form thông tin cá nhân (theo mẫu)", tag:"File"},
+      {main:"2 ảnh 3.5×4.5cm nền trắng, chụp trong 6 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Scan/File"},
+      {main:"CMND hoặc CCCD", tag:"Scan/File"},
+      {main:"Giấy đăng ký kết hôn (nếu đi cùng vợ/chồng)", tag:"Scan/File"},
+      {main:"Giấy khai sinh (nếu đi cùng bố/mẹ/con)", tag:"Scan/File"},
+      {main:"Giấy phép cư trú tại Việt Nam (nếu là người nước ngoài)", tag:"Scan/File"},
+      {main:"Chứng minh công việc", tag:"Scan/File", subs:[
+        {head:"Nếu là cán bộ – nhân viên:"},
+        "Đơn xin nghỉ phép (bản gốc)","Hợp đồng lao động","Bảng lương 3 tháng gần nhất","BHYT/BHXH (công ty đóng 6 tháng gần nhất)",
+        {head:"Nếu là chủ doanh nghiệp:"},
+        "Giấy phép ĐKKD","Giấy nộp thuế 12 tháng gần nhất","Sao kê tài khoản công ty 6 tháng gần nhất"
+      ]},
+      financeProofStandard(),
+      {main:"Kế hoạch cho chuyến đi", tag:"Scan/File/Photo"},
+    ]
+  }],
+  notes: NOTES_CA_EU
+};
+
+const PROC_DAI_LOAN = {
+  label:"Đài Loan",
+  variants:[
+    {
+      key:"dl", label:"Du lịch",
+      time:"6 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Danh mục hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh", tag:"Scan/File, còn 2 trang gốc"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 6 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"CCCD gắn chip (nếu đang dùng CCCD mã vạch cũ phải trình thêm giấy xác nhận đổi số CCCD)", tag:"Scan/File"},
+          {main:"Sổ hộ khẩu, CT07 (nếu hộ khẩu từ Huế trở ra Bắc phải có xác nhận tạm trú tại miền Nam trên 1 năm)", tag:"Scan/File"},
+          {main:"Giấy đăng ký kết hôn (nếu đã kết hôn)", tag:"Scan/File"},
+          {main:"Giấy khai sinh (nếu có con)", tag:"Scan/File"},
+          {main:"Chứng minh công việc", tag:"Scan/File", subs:[
+            {head:"Nếu là cán bộ – nhân viên:"},
+            "Hợp đồng lao động","BHYT + BHXH (công ty đóng ít nhất 6 tháng, bằng VSSID)","Thẻ nhân viên","Đơn xin nghỉ phép đi du lịch","Sao kê lương 6 tháng gần nhất",
+            {head:"Nếu là chủ doanh nghiệp:"},
+            "Giấy phép ĐKKD có tên đương đơn","Giấy nộp thuế TNDN 12 tháng gần nhất","Sao kê tài khoản công ty 6 tháng gần nhất","Danh thiếp"
+          ]},
+          {main:"Sổ tiết kiệm ít nhất 100 triệu, kỳ hạn ít nhất 3 tháng và còn hạn", tag:"Scan/File"},
+          {main:"Chứng minh tài sản cá nhân", tag:"Scan/File", subs:[
+            "Giấy tờ nhà đất (sổ đỏ, sổ hồng đứng tên đương đơn)","Giấy đăng ký xe ô tô (nếu có)"
+          ]},
+        ]
+      }],
+      notes:[
+        "Áp dụng cho tất cả khách có hộ khẩu từ Đà Nẵng trở vào Nam.",
+        "Đương đơn phải có mặt tại Văn phòng Kinh tế Văn hóa Đài Bắc (TECO) để trình diện.",
+        "Khi lên trình diện cần mang theo các giấy tờ gốc + photo, TECO sẽ đối chiếu và trả lại bản gốc tại chỗ.",
+        "TECO có quyền yêu cầu đương sự giải trình và cung cấp thêm giấy tờ nếu có nghi ngờ; không cung cấp được đồng nghĩa với từ chối visa.",
+        "Thời gian xét duyệt có thể kéo dài hơn dự kiến, TECO có thể yêu cầu trình diện nhiều hơn 1 lần nếu nghi vấn về hồ sơ hoặc mục đích nhập cảnh.",
+        "Hồ sơ không hoàn chỉnh có thể bị từ chối cấp visa; tuy nhiên nộp đầy đủ chứng từ cũng không đảm bảo chắc chắn được cấp visa.",
+        "Chi phí sẽ không được hoàn trả nếu kết quả visa không đạt, hoặc việc cấp duyệt trễ hơn ngày khởi hành."
+      ]
+    },
+    {
+      key:"ct", label:"Công tác",
+      time:"6 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Danh mục hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh", tag:"Scan/File, còn 2 trang gốc"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 6 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"CMND + hộ khẩu/sổ tạm trú miền Nam trên 1 năm/CT07/CT08 (bản gốc)", tag:"File"},
+          {main:"Quyết định cử đi công tác (ghi rõ chức vụ của người được mời)", tag:"Scan/File"},
+          {main:"Giấy đăng ký kết hôn (nếu đã kết hôn)", tag:"Scan/File"},
+          {main:"Thẻ nhân viên, name card (nếu có)", tag:"Scan/File"},
+          {main:"Giấy phép ĐKKD công ty Việt Nam (sao y công chứng ủy ban, trong 3 tháng gần nhất)", tag:"Scan/File"},
+          {main:"Bảo hiểm y tế và xã hội (app VSSID) — công ty đóng ít nhất 6 tháng gần nhất", tag:"Scan/File"},
+          {main:"Giấy ủy quyền cho nhân viên đại diện làm thủ tục", tag:"File"},
+          {main:"Cung cấp ID và pass VSSID", tag:"File", subs:[
+            {head:"Hồ sơ từ phía Đài Loan gửi về bao gồm:"},
+            "Thư mời tiếng Hoa hoặc song ngữ, ký tên đóng dấu","CMND — photo 2 mặt","Danh thiếp người mời","Hộ chiếu (có chữ ký) của người mời — bản photo","Giấy phép ĐKKD Đài Loan — scan màu"
+          ]},
+        ]
+      }],
+      notes:[
+        "TECO (Văn phòng Đài Bắc TP.HCM) chỉ nhận hồ sơ khách có hộ khẩu từ Đà Nẵng trở vào Nam, hoặc có giấy tạm trú tại miền Nam trên 1 năm.",
+        "Người đứng tên trên giấy phép ĐKKD, CCCD, hộ chiếu và người ký thư mời nên là cùng 1 người.",
+        "Các chứng từ công chứng phải được công chứng tại Ủy ban Nhân dân hoặc Phòng Công chứng số — LSQ không nhận công chứng văn phòng tư nhân.",
+        "Tất cả giấy tờ LSQ đều yêu cầu bản gốc để đối chiếu, và sẽ trả lại ngay tại chỗ khi khách hoàn tất trình diện.",
+        "Hộ chiếu và hồ sơ đã nộp trong thời gian xét duyệt sẽ không được rút ra dưới bất cứ lý do nào.",
+        "TECO hiện đã bỏ quy định xin lịch hẹn, thay bằng phát số thứ tự trong ngày (giới hạn khoảng 80 khách buổi sáng, 40 khách buổi chiều) — nên gửi hồ sơ càng sớm càng tốt.",
+        "TECO có quyền yêu cầu đương sự giải trình và bổ sung bất cứ giấy tờ nào nếu có nghi ngờ; không thể/không muốn cung cấp đồng nghĩa với từ chối visa.",
+        "Gửi hồ sơ chậm trễ sau deadline sẽ ảnh hưởng đến ngày trả kết quả thị thực.",
+        "Kết quả thị thực phụ thuộc vào quyết định của LSQ/ĐSQ; thời gian trả kết quả có thể thay đổi tùy viên chức LSQ.",
+        "Chi phí sẽ không được hoàn trả nếu kết quả visa không đạt, hoặc việc cấp duyệt trễ hơn ngày khởi hành."
+      ]
+    }
+  ]
+};
+
+const PROC_HAN_QUOC = {
+  label:"Hàn Quốc (Du lịch)",
+  time:"15–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+  sections:[
+    {
+      title:"1. Hồ sơ hộ chiếu và thông tin cá nhân",
+      items:[
+        {main:"Full thông tin hộ chiếu, còn hạn tối thiểu 6 tháng kể từ ngày khởi hành", tag:"Scan"},
+        {main:"Form thông tin cá nhân (theo mẫu đính kèm)", tag:"File"},
+        {main:"2 tấm hình thẻ 3.5×4.5cm nền trắng (chụp không quá 3 tháng)", tag:"Scan/Photo"},
+        {main:"Hộ khẩu hoặc giấy xác nhận thông tin cư trú (CT07, CT08)", tag:"Scan/Photo"},
+        {main:"CMND hoặc CCCD", tag:"Scan/Photo"},
+        {main:"Giấy đăng ký kết hôn", tag:"Scan/Photo"},
+        {main:"Khai sinh các con — nếu đi cùng chuyến", tag:"Scan/Photo"},
+        {main:"Trường hợp không phải công dân Việt Nam: giấy phép cư trú Việt Nam cho người nước ngoài", tag:"Scan/Photo"},
+        {main:"Form thông tin thân nhân", tag:"File"},
+      ],
+      footnote:"Nếu người nộp đơn là trẻ dưới tuổi thành niên, phải nộp thêm bản tuyên bố đồng ý của cha mẹ."
+    },
+    {
+      title:"2. Bằng chứng việc làm (theo từng đối tượng)",
+      groups:[
+        {label:"Cán bộ – nhân viên", items:[
+          {main:"Giấy xác nhận nhân viên song ngữ bản gốc, có chức vụ người ký (theo mẫu)", tag:"Bắt buộc"},
+          {main:"Sao kê tài khoản ngân hàng bao gồm nội dung lương 6 tháng gần nhất", tag:"Bắt buộc"},
+          {main:"Bảo hiểm xã hội: chụp màn hình ứng dụng VssID bằng tiếng Anh (theo mẫu)", tag:"Bắt buộc"},
+          {main:"Nếu không có BHXH: kèm tờ trình bày lý do + tài chính/tài sản", tag:"Bắt buộc"},
+        ]},
+        {label:"Chủ doanh nghiệp", items:[
+          {main:"Giấy phép đăng ký kinh doanh", tag:"Bắt buộc"},
+          {main:"Biên lai hoặc tờ khai thuế GTGT trong 1 năm gần nhất (photo sao y hoặc đóng mộc treo công ty nếu là thuế điện tử)", tag:"Bắt buộc"},
+          {main:"Sao kê tài khoản công ty 6 tháng gần nhất", tag:"Bắt buộc"},
+        ]},
+        {label:"Chủ hộ kinh doanh", items:[
+          {main:"Giấy phép đăng ký hộ kinh doanh", tag:"Bắt buộc"},
+          {main:"Chụp hình hộ kinh doanh (3 tấm: 1 tấm mặt trước thấy rõ bảng hiệu/địa chỉ/quang cảnh, 2 tấm bên trong thấy rõ hàng hoá — trong hình phải có người xin visa)", tag:"Bắt buộc"},
+          {main:"Sao kê tài khoản công ty 6 tháng gần nhất", tag:"Bắt buộc"},
+          {main:"Biên lai nộp thuế trong 1 năm gần nhất", tag:"Bắt buộc"},
+          {main:"Giấy chứng nhận đăng ký thuế", tag:"Bắt buộc"},
+        ]},
+        {label:"Hưu trí", items:[
+          {main:"Quyết định nghỉ hưu, thẻ hưu trí (photo)", tag:"Bắt buộc"},
+          {main:"Sao kê tài khoản công ty 6 tháng gần nhất", tag:"Bắt buộc"},
+        ]},
+        {label:"Học sinh / sinh viên", items:[
+          {main:"Thẻ học sinh/sinh viên bản gốc", tag:"Bắt buộc"},
+          {main:"Giấy xác nhận học sinh/sinh viên bản gốc", tag:"Bắt buộc"},
+        ]},
+      ],
+      footnote:"Trẻ vị thành niên dưới 18 tuổi không đi cùng bố/mẹ phải nộp giấy đồng ý du lịch của bố mẹ, kèm giấy khai sinh, CCCD của bố mẹ sao y + hồ sơ công việc và tài chính của bố mẹ."
+    },
+    {
+      title:"3. Hồ sơ chứng minh tài chính, tài sản kèm theo",
+      items:[
+        {main:"Giấy chứng nhận quyền sử dụng đất, quyền sở hữu nhà ở"},
+        {main:"Sổ tiết kiệm bản gốc, xác nhận số dư sổ tiết kiệm gốc"},
+      ]
+    }
+  ],
+  notes:[
+    "Tất cả hồ sơ phải sao y không quá 3 tháng.",
+    "Tất cả bản sao hồ sơ phải được photo sao y trên 1 mặt khổ giấy A4, không được cắt nhỏ, không sử dụng bản scan/bản chụp.",
+    "Với giấy chứng nhận quyền sử dụng nhà, đất ở: photo sao y theo đúng khổ giấy của giấy tờ gốc.",
+    "Với giấy phép kinh doanh: có thể photo sao y trên 2 mặt giấy A4.",
+    "Lãnh sự quán Hàn Quốc tại TP.HCM chỉ tiếp nhận hồ sơ khách có thường trú hoặc tạm trú từ 1 năm trở lên, từ khu vực Kon Tum, Bình Định trở vào Nam."
+  ]
+};
+
+const PROC_HONGKONG = {
+  label:"Hong Kong (thủ tục xin Evisa)",
+  variants:[
+    {
+      key:"dl", label:"Du lịch",
+      time:"6–10 tuần làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh", tag:"Scan nguyên cuốn có nơi sinh"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 6 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"Xác nhận công việc + xác nhận lương 3 tháng gần nhất", tag:"Scan/File (tiếng Anh)"},
+          {main:"Đơn xin nghỉ phép", tag:"Scan/File (tiếng Anh)"},
+          {main:"Xác nhận số dư sổ tiết kiệm ít nhất 100 triệu, còn kỳ hạn", tag:"Scan/File"},
+          {main:"Địa chỉ lưu trú hiện tại", tag:"Scan/File"},
+          {main:"Lịch sử nhập cảnh Hong Kong", tag:"Scan/File"},
+          {main:"Tình trạng hôn nhân", tag:"Scan màu chất lượng cao"},
+          {main:"Nếu là chủ doanh nghiệp thì mục [3][4] thay thế bằng:", tag:"Scan màu chất lượng cao", subs:[
+            "Giấy phép ĐKKD","Báo cáo thuế 3 tháng gần nhất","Thời gian lưu trú (tối đa 7 ngày)"
+          ]},
+        ]
+      }],
+      notes:[
+        "Tất cả giấy tờ trên yêu cầu bản tiếng Anh hoặc song ngữ và bản scan màu chất lượng cao.",
+        "Việc gửi hồ sơ chậm trễ sau thời hạn quy định sẽ ảnh hưởng đến ngày trả kết quả thị thực.",
+        "Kết quả thị thực phụ thuộc vào quyết định của Lãnh sự quán/Đại sứ quán.",
+        "Thời gian gửi trả kết quả có thể thay đổi tùy thuộc vào viên chức Lãnh sự quán.",
+        "Chi phí sẽ không được hoàn trả nếu kết quả visa không đạt, hoặc việc cấp duyệt trễ hơn ngày khởi hành."
+      ]
+    },
+    {
+      key:"ct", label:"Công tác",
+      time:"6–10 tuần làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh", tag:"Scan nguyên cuốn có nơi sinh"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 6 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"Thư mời + giấy phép ĐKKD tại Hong Kong (ghi rõ chức vụ + số điện thoại + email người mời)", tag:"Scan/File"},
+          {main:"Quyết định cử đi công tác + giấy phép ĐKKD tại Việt Nam (ghi rõ chức vụ của người được mời)", tag:"Scan/File"},
+          {main:"Xác nhận số dư sổ tiết kiệm ít nhất 100 triệu", tag:"Scan/File"},
+          {main:"Xác nhận nhân viên hoặc hợp đồng lao động (song ngữ)", tag:"Scan/File"},
+          {main:"Lịch sử nhập cảnh Hong Kong", tag:"Scan/File"},
+          {main:"Tình trạng hôn nhân", tag:"Scan màu chất lượng cao"},
+          {main:"Địa chỉ lưu trú hiện tại", tag:"Scan màu chất lượng cao", subs:[
+            "Thời gian lưu trú: tối đa 7 ngày","Hồ sơ không chụp bằng điện thoại; khách hàng không cần trình diện"
+          ]},
+        ]
+      }],
+      notes:[
+        "Tất cả giấy tờ trên yêu cầu bản tiếng Anh hoặc song ngữ và bản scan màu chất lượng cao.",
+        "Việc gửi hồ sơ chậm trễ sau thời hạn quy định sẽ ảnh hưởng đến ngày trả kết quả thị thực.",
+        "Kết quả thị thực phụ thuộc vào quyết định của Lãnh sự quán/Đại sứ quán.",
+        "Thời gian gửi trả kết quả có thể thay đổi tùy thuộc vào viên chức Lãnh sự quán.",
+        "Chi phí sẽ không được hoàn trả nếu kết quả visa không đạt, hoặc việc cấp duyệt trễ hơn ngày khởi hành."
+      ]
+    }
+  ]
+};
+
+const PROC_NHAT_BAN = {
+  label:"Nhật Bản",
+  variants:[
+    {
+      key:"dl1", label:"Du lịch – 1 lần",
+      time:"15–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[
+        {
+          title:"Hồ sơ cá nhân",
+          items:[
+            {main:"Hộ chiếu", tag:"Bản gốc, còn hạn trên 6 tháng từ ngày khởi hành"},
+            {main:"Tờ khai thông tin người xin cấp visa / tờ ký người xin cấp visa", tag:"Theo mẫu công ty cung cấp"},
+            {main:"2 ảnh thẻ 3.5×4.5cm", tag:"File cứng, nền trắng, lộ ngũ quan, không trang sức/kính"},
+            {main:"Căn cước công dân", tag:"Photo"},
+          ]
+        },
+        {
+          title:"Chứng minh mối quan hệ",
+          items:[
+            {main:"Giấy đăng ký kết hôn", tag:"Bản photo, khi vợ chồng đi cùng nhau"},
+            {main:"Giấy khai sinh", tag:"Bản photo, khi con đi cùng bố/mẹ"},
+          ]
+        },
+        {
+          title:"Chứng minh công việc",
+          groups:[
+            {label:"Chủ doanh nghiệp", items:[
+              {main:"Giấy phép kinh doanh", tag:"Photo"},
+              {main:"Giấy nộp tiền vào ngân sách nhà nước VAT 3 tháng gần nhất", tag:"Bản gốc, đóng dấu treo công ty"},
+              {main:"Sao kê tài khoản cá nhân 6 tháng gần nhất", tag:"Bản gốc, xin tại ngân hàng"},
+            ]},
+            {label:"Người lao động", items:[
+              {main:"Hợp đồng lao động / giấy xác nhận nhân viên gốc", tag:"Photo"},
+              {main:"Sao kê tài khoản nhận lương 6 tháng gần nhất", tag:"Bản gốc, xin tại ngân hàng"},
+              {main:"Đơn xin nghỉ phép", tag:"Bản gốc, ký đóng dấu của công ty"},
+              {main:"Quá trình đóng BHXH trên app VSSID", tag:"Chụp màn hình thông tin cá nhân, quá trình đóng & chi tiết tiền lương"},
+            ]},
+            {label:"Hưu trí", items:[
+              {main:"Quyết định về hưu hoặc thẻ hưu trí", tag:"Photo"},
+              {main:"Sao kê tài khoản nhận lương hưu 6 tháng gần nhất", tag:"Bản gốc, xin tại ngân hàng"},
+            ]},
+            {label:"Học sinh / sinh viên (khi con đi cùng bố/mẹ)", items:[
+              {main:"Giấy xác nhận học sinh/sinh viên hoặc thẻ học sinh/sinh viên", tag:"Bản gốc ký xác nhận nhà trường / Photo"},
+              {main:"Hồ sơ công việc và tài chính của bố hoặc mẹ", tag:"Đầy đủ giấy tờ theo nghề nghiệp bố mẹ"},
+            ]},
+          ]
+        },
+        {
+          title:"Chứng minh tài chính",
+          items:[
+            {main:"Sổ tiết kiệm", tag:"Bản photo"},
+            {main:"Xác nhận số dư tài khoản tiết kiệm", tag:"Bản gốc, xin tại ngân hàng"},
+            {main:"Sổ nhà đất, đăng ký ô tô", tag:"Bản photo"},
+          ]
+        },
+      ]
+    },
+    {
+      key:"dln", label:"Du lịch – nhiều lần",
+      time:"15–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[
+        {
+          title:"Hộ chiếu",
+          items:[
+            {main:"Full thông tin hộ chiếu, còn hạn tối thiểu 6 tháng kể từ ngày khởi hành", tag:"Scan"},
+            {main:"Form thông tin cá nhân (theo mẫu đính kèm)", tag:"File"},
+            {main:"2 tấm hình thẻ 3.5×4.5cm nền trắng (chụp không quá 3 tháng)", tag:"Scan/Photo"},
+            {main:"Khai sinh các con — cùng chuyến nếu có", tag:"Scan/Photo"},
+            {main:"CMND hoặc CCCD", tag:"Scan/Photo"},
+            {main:"Giấy đăng ký kết hôn", tag:"Scan/Photo"},
+            {main:"Sổ hộ khẩu", tag:"Scan/Photo"},
+          ],
+          footnote:"Nếu người nộp đơn là trẻ dưới tuổi thành niên thì phải nộp thêm bản tuyên bố đồng ý của cha mẹ."
+        },
+        {
+          title:"Bằng chứng việc làm",
+          groups:[
+            {label:"Cán bộ – nhân viên", items:[
+              {main:"Hợp đồng lao động", tag:"Bắt buộc"},
+              {main:"Đơn xin nghỉ phép", tag:"Bắt buộc"},
+              {main:"Bảng sao kê lương 6 tháng gần nhất", tag:"Bắt buộc"},
+            ]},
+            {label:"Hưu trí", items:[
+              {main:"Quyết định về hưu và sổ hưu trí", tag:"Bản gốc"},
+              {main:"Sao kê tài khoản nhận lương hưu 6 tháng gần nhất", tag:"Bản gốc, xin tại ngân hàng"},
+            ]},
+            {label:"Học sinh / sinh viên (khi con đi cùng bố/mẹ)", items:[
+              {main:"Giấy xác nhận học sinh/sinh viên hoặc thẻ học sinh/sinh viên", tag:"Bản gốc ký xác nhận nhà trường / Photo"},
+              {main:"Hồ sơ công việc và tài chính của bố hoặc mẹ", tag:"Đầy đủ giấy tờ theo nghề nghiệp bố mẹ"},
+            ]},
+          ]
+        },
+        {
+          title:"Chứng minh tài chính",
+          items:[
+            {main:"Sổ tiết kiệm", tag:"Bản photo"},
+            {main:"Xác nhận số dư tài khoản tiết kiệm", tag:"Bản gốc, xin tại ngân hàng"},
+            {main:"Sổ nhà đất, đăng ký ô tô", tag:"Bản photo"},
+            {main:"Sao kê 6 tháng tài khoản giao dịch ngân hàng", tag:"Bản photo"},
+          ]
+        },
+      ],
+      notes:[
+        "Tất cả hồ sơ phải sao y không quá 3 tháng.",
+        "Tất cả bản sao hồ sơ phải được photo sao y trên 1 mặt khổ giấy A4, không được cắt nhỏ, không sử dụng bản scan/bản chụp.",
+        "Với giấy chứng nhận quyền sử dụng nhà, đất ở: photo sao y theo đúng khổ giấy của giấy tờ gốc.",
+        "Với giấy phép kinh doanh: có thể photo sao y trên 2 mặt giấy A4."
+      ]
+    },
+    {
+      key:"ct", label:"Công tác",
+      time:"15–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[
+        {
+          title:"Hồ sơ cá nhân",
+          items:[
+            {main:"Hộ chiếu, phải có chữ ký", tag:"Bản gốc, còn hạn trên 6 tháng từ ngày khởi hành"},
+            {main:"Tờ khai thông tin người xin cấp visa / tờ ký người xin cấp visa", tag:"Theo mẫu công ty cung cấp"},
+            {main:"2 ảnh thẻ 3.5×4.5cm", tag:"File cứng, nền trắng, lộ ngũ quan, không trang sức/kính"},
+            {main:"Căn cước công dân", tag:"Photo"},
+          ]
+        },
+        {
+          title:"Công ty Việt Nam chuẩn bị",
+          items:[
+            {main:"Quyết định cử đi công tác", tag:"Bản gốc — ghi rõ nội dung công việc tại Nhật, nơi viếng thăm, chương trình và việc chi trả chi phí"},
+            {main:"Hợp đồng lao động", tag:"Bản photo"},
+            {main:"Giấy phép kinh doanh", tag:"Photo, đóng dấu treo công ty"},
+            {main:"Tài liệu công khai giới thiệu mối quan hệ của các công ty cùng tập đoàn", tag:"Bản in trang web hoặc pamphlet"},
+            {main:"Tài liệu chứng minh quan hệ thương mại giữa các công ty", tag:"Hợp đồng mua bán"},
+          ]
+        },
+        {
+          title:"Phía Nhật Bản chuẩn bị",
+          items:[
+            {main:"Thư mời", tag:"Bản gốc hoặc file scan, có đóng dấu"},
+            {main:"Thư bảo lãnh", tag:"Bản gốc/scan, nếu người mời chi trả chuyến đi"},
+            {main:"Namelist (nếu đi từ 2 người trở lên)", tag:"Bản gốc/scan"},
+            {main:"Hộ chiếu người mời", tag:"File scan"},
+            {main:"Lịch trình hội thảo/sự kiện", tag:"File scan"},
+            {main:"Đăng ký pháp nhân của công ty bảo lãnh (hoặc Tokibo)", tag:"File scan"},
+          ]
+        },
+        {
+          title:"Chứng minh tài chính",
+          items:[
+            {main:"Sổ tiết kiệm", tag:"Bản photo"},
+            {main:"Xác nhận số dư tài khoản tiết kiệm", tag:"Bản gốc, xin tại ngân hàng"},
+            {main:"Sổ nhà đất, đăng ký ô tô", tag:"Bản photo"},
+          ]
+        },
+      ],
+      notes:[
+        "Khối GT (nhóm quốc gia đối tác tin cậy áp dụng thủ tục riêng): gồm Pháp, Đức, Italy, Nhật Bản, Mỹ, Anh và Canada."
+      ]
+    }
+  ]
+};
+
+function chinaTravelNotes(deadlineWord){
+  return [
+    "Hộ khẩu và CCCD phải photo trên 1 mặt giấy A4, không cắt nhỏ.",
+    "Hồ sơ phải được photo từ bản gốc, không được chụp hình rồi in ra vì Lãnh sự quán sẽ từ chối nhận.",
+    `${deadlineWord} nhận hồ sơ là 3 tuần trước ngày khởi hành — nên gửi hồ sơ càng sớm càng tốt.`,
+    "Sau khi đã nộp hồ sơ, LSQ sẽ không chấp nhận rút hồ sơ và hộ chiếu dưới bất kỳ lý do nào."
+  ];
+}
+const CHINA_BUSINESS_NOTES = [
+  "Giấy tờ sao y công chứng: không quá 3 tháng, trình bày trên 1 mặt giấy A4, không cắt nhỏ.",
+  "Sao kê tài khoản ngân hàng: bản gốc, thực hiện không quá 1 tuần trước ngày nộp hồ sơ.",
+  "Việc thiếu giấy tờ có thể dẫn đến từ chối visa. Nộp đầy đủ không đồng nghĩa với việc được cấp visa — quyết định cuối cùng thuộc về LSQ/ĐSQ.",
+  "LSQ/ĐSQ có quyền yêu cầu bổ sung hồ sơ tùy từng trường hợp cá nhân.",
+  "Tất cả giấy tờ được yêu cầu, chi phí và thời gian xét duyệt có thể thay đổi (không báo trước) theo quy định của LSQ/ĐSQ tại thời điểm nộp hồ sơ."
+];
+function chinaBusinessItems(){
+  return [
+    {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ (nếu có)", tag:"Scan"},
+    {main:"2 ảnh 4×6 nền trắng, chụp trong 3 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+    {main:"Căn cước công dân (sao y công chứng + bản gốc)", tag:"Scan/Photo"},
+    {main:"Hộ khẩu hoặc giấy xác nhận thông tin cư trú (CT07, CT08)", tag:"Scan/Photo"},
+    {main:"Bản form khai thông tin", tag:"Scan/Photo"},
+    {main:"Quyết định cử đi công tác — theo mẫu", tag:"Scan/Photo"},
+    {main:"Giấy phép kinh doanh Việt Nam — sao y công chứng 3 tháng gần nhất", tag:"Scan"},
+    {main:"CMND/hộ chiếu Trung Quốc của người mời", tag:"Scan màu"},
+    {main:"Giấy phép kinh doanh Trung Quốc — scan", tag:"Scan màu"},
+  ];
+}
+
+const PROC_TRUNG_QUOC = {
+  label:"Trung Quốc",
+  variants:[
+    {
+      key:"dl-trung", label:"Du lịch — Miền Trung",
+      time:"12–15 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ (nếu có)", tag:"Scan — yêu cầu có thông tin nơi sinh"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 3 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"Giấy xác nhận số dư tiền tiết kiệm ít nhất 100 triệu, còn kỳ hạn và có ngày hết hạn", tag:"Scan/Photo"},
+          {main:"Căn cước công dân / hộ khẩu", tag:"Scan/File", subs:[
+            "Căn cước công dân: sao y công chứng 2 mặt trên cùng 1 mặt giấy A4 không cắt nhỏ — trong 3 tháng gần nhất",
+            "Hộ khẩu: sao y bản chính các trang trên cùng 1 mặt giấy A4 không cắt nhỏ, hoặc trình CT07/CT08 bản gốc"
+          ]},
+          {main:"Form khai thông tin", tag:"Scan"},
+        ]
+      }],
+      notes: chinaTravelNotes("Deadline")
+    },
+    {
+      key:"dl-nam", label:"Du lịch — Miền Nam",
+      time:"12–15 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ (nếu có)", tag:"File — yêu cầu có thông tin nơi sinh"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 3 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"Căn cước công dân — bản scan màu, 2 mặt", tag:"LSQ có thể yêu cầu bản gốc nếu cần"},
+          {main:"Hộ khẩu bản gốc, hoặc:", tag:"File", subs:[
+            "Trình CT07 (còn hạn tại miền Nam — bản gốc)","Trình CT08 (còn hạn sử dụng 2 năm tại miền Nam — bản gốc)"
+          ]},
+          {main:"Form khai thông tin", tag:"Scan"},
+          {main:"Nếu là nhân viên: xác nhận nhân viên + đơn xin nghỉ phép theo mẫu (địa chỉ làm việc và cư trú phải cùng tỉnh thành). Nếu là lao động tự do: xác nhận số dư tiết kiệm ít nhất 100 triệu, còn kỳ hạn, ghi rõ ngày hết hạn (địa chỉ ngân hàng và cư trú phải cùng tỉnh thành)", tag:"File/Scan"},
+        ]
+      }],
+      notes: chinaTravelNotes("Thời hạn")
+    },
+    {
+      key:"dl-bac", label:"Du lịch — Miền Bắc",
+      time:"12–15 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{
+        title:"Hồ sơ yêu cầu",
+        items:[
+          {main:"Hộ chiếu gốc, còn thời hạn ít nhất 6 tháng kể từ ngày nhập cảnh + hộ chiếu cũ (nếu có)", tag:"Scan — yêu cầu có thông tin nơi sinh"},
+          {main:"2 ảnh 4×6 nền trắng, chụp trong 3 tháng gần nhất, không đeo kính, lộ trán, rõ 2 tai", tag:"Photo"},
+          {main:"Giấy xác nhận số dư tiền tiết kiệm ít nhất 100 triệu, còn kỳ hạn và có ngày hết hạn", tag:"Scan/Photo"},
+          {main:"Căn cước công dân / hộ khẩu", tag:"Scan/Photo", subs:[
+            {head:"Nếu hộ chiếu đã từng đi nước ngoài:"},
+            "Căn cước công dân (photo 2 mặt)","Hộ khẩu/CT07/CT08 (photo 2 mặt)",
+            {head:"Nếu hộ chiếu chưa đi nước ngoài:"},
+            "Căn cước công dân: sao y công chứng 2 mặt trên 1 mặt giấy A4 không cắt nhỏ — làm trong 3 tháng gần nhất",
+            "Hộ khẩu: sao y công chứng các trang trên 1 mặt giấy A4 không cắt nhỏ, hoặc trình CT07/CT08 bản gốc"
+          ]},
+          {main:"Form khai thông tin", tag:"Scan"},
+        ]
+      }],
+      notes: chinaTravelNotes("Thời hạn")
+    },
+    {
+      key:"ct-nam", label:"Công tác — Miền Nam",
+      time:"10–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{ title:"Hồ sơ yêu cầu", items: chinaBusinessItems() }],
+      notes: CHINA_BUSINESS_NOTES
+    },
+    {
+      key:"ct-bac", label:"Công tác — Miền Bắc",
+      time:"10–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+      sections:[{ title:"Hồ sơ yêu cầu", items: chinaBusinessItems() }],
+      notes: CHINA_BUSINESS_NOTES
+    },
+  ]
+};
+
+const PROC_UC = {
+  label:"Úc (Du lịch)",
+  time:"15–20 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ",
+  sections:[
+    {
+      title:"Hồ sơ hộ chiếu",
+      items:[
+        {main:"Full thông tin hộ chiếu, còn hạn tối thiểu 6 tháng kể từ ngày khởi hành", tag:"Scan"},
+        {main:"Form thông tin cá nhân (theo mẫu đính kèm)", tag:"File"},
+        {main:"Hộ chiếu cũ", tag:"Scan/Photo"},
+        {main:"Hộ khẩu hoặc giấy xác nhận thông tin cư trú (CT07, CT08)", tag:"Scan/Photo"},
+        {main:"CMND hoặc CCCD", tag:"Scan/Photo"},
+        {main:"Giấy đăng ký kết hôn", tag:"Scan/Photo"},
+        {main:"Khai sinh các con", tag:"Scan/Photo"},
+        {main:"Trường hợp không phải công dân Việt Nam: giấy phép cư trú Việt Nam cho người nước ngoài", tag:"Scan/Photo"},
+        {main:"Form thông tin thân nhân", tag:"File"},
+      ],
+      footnote:"Nếu người nộp đơn là trẻ dưới tuổi thành niên thì phải nộp thêm bản tuyên bố đồng ý của cha mẹ."
+    },
+    {
+      title:"Bằng chứng việc làm",
+      groups:[
+        {label:"Cán bộ – nhân viên", items:[
+          {main:"Hợp đồng lao động nêu rõ vị trí/chức vụ, thời hạn hợp đồng", tag:"Scan/Photo"},
+          {main:"Sao kê tài khoản ngân hàng", tag:"Scan/Photo"},
+          {main:"Xác nhận của bên sử dụng lao động về việc cho nghỉ phép", tag:"Scan/Photo"},
+          {main:"Sổ bảo hiểm xã hội (có thể chụp quá trình đóng trên VSSID)", tag:"Scan/Photo"},
+        ]},
+        {label:"Chủ doanh nghiệp", items:[
+          {main:"Đăng ký kinh doanh", tag:"Scan/Photo"},
+          {main:"Giấy nộp thuế 3 tháng gần nhất", tag:"Scan/Photo"},
+          {main:"Sao kê tài khoản công ty (nếu có)", tag:"Scan/Photo"},
+        ]},
+        {label:"Học sinh / sinh viên", items:[
+          {main:"Thẻ học sinh, sinh viên còn hiệu lực hoặc xác nhận học sinh, sinh viên", tag:"Scan/Photo"},
+          {main:"Đơn xin nghỉ phép hoặc lịch học của trường có thời gian nghỉ phép", tag:"Scan/Photo"},
+        ]},
+        {label:"Hưu trí", items:[
+          {main:"Sổ lãnh lương hưu hoặc thẻ hưu trí", tag:"Scan/Photo"},
+        ]},
+      ]
+    },
+    {
+      title:"Tài chính — tài sản",
+      items:[
+        {main:"Sao kê tài khoản ngân hàng 3 tháng gần nhất có xác nhận của ngân hàng", tag:"Bản gốc"},
+        {main:"Sổ tiết kiệm, chứng nhận sở hữu cổ phiếu, quyền sử dụng đất, quyền sở hữu bất động sản", tag:"Scan/Photo"},
+      ]
+    },
+    {
+      title:"Kế hoạch chuyến đi",
+      items:[
+        {main:"Đặt chỗ vé máy bay và khách sạn hợp lệ", tag:"File"},
+        {main:"Bảo hiểm y tế du lịch bắt buộc", tag:"File"},
+        {main:"Lịch trình du lịch (dự kiến)", tag:"File"},
+        {main:"Thư mời", tag:"File"},
+      ]
+    },
+  ],
+  notes:[
+    "Giấy tờ sao y công chứng: không quá 3 tháng, trình bày trên 1 mặt giấy A4, không cắt nhỏ.",
+    "Sao kê tài khoản ngân hàng: bản gốc, thực hiện không quá 1 tuần trước ngày nộp hồ sơ.",
+    "Việc thiếu giấy tờ có thể dẫn đến từ chối visa. Nộp đầy đủ không đồng nghĩa với việc được cấp visa — quyết định cuối cùng thuộc về LSQ/ĐSQ.",
+    "LSQ/ĐSQ có quyền yêu cầu bổ sung hồ sơ tùy từng trường hợp cá nhân.",
+    "Tất cả giấy tờ được yêu cầu, chi phí và thời gian xét duyệt có thể thay đổi (không báo trước) theo quy định của LSQ/ĐSQ tại thời điểm nộp hồ sơ."
+  ]
+};
+
+const PROC_MY = {
+  label:"Mỹ — Visa B1/B2 (toàn quốc)",
+  time:"Bắt buộc phỏng vấn — có kết quả ngay tại buổi phỏng vấn, nhận visa sau 3–5 ngày làm việc",
+  sections:[
+    {
+      title:"Hồ sơ chuẩn bị (ảnh chụp/scan)",
+      items:[
+        {main:"Hộ chiếu gốc (còn hạn trên 6 tháng); hộ chiếu hết hạn (nếu có)"},
+        {main:"02 ảnh 5×5cm phông nền trắng, không đội nón, không chỉnh sửa (chụp trong 6 tháng gần đây) + gửi file ảnh 5×5cm qua Zalo"},
+        {main:"Căn cước công dân"},
+        {main:"Đăng ký kết hôn"},
+        {main:"Nếu có người thân bên Mỹ: hộ chiếu/thẻ xanh của người thân"},
+        {main:"Nếu đi cùng con: giấy khai sinh"},
+        {main:"Bằng đại học, bằng cấp khác (nếu có)"},
+        {main:"Phiếu thông tin điền đầy đủ và chính xác — thông tin chưa rõ ràng cần minh chứng bằng ảnh chụp/scan để đối chiếu"},
+      ]
+    },
+    {
+      title:"Phí lãnh sự & phí giao nhận hồ sơ",
+      items:[
+        {main:"Phí tem (MRV fee)", tag:"185 USD + phí nhận thị thực"},
+        {main:"Premium Delivery (giao tận nhà/văn phòng)", tag:"325.000đ / hộ chiếu / hồ sơ"},
+        {main:"Premium Location (nhận tại điểm chỉ định)", tag:"325.000đ / hộ chiếu / hồ sơ"},
+        {main:"Express Premium Delivery — địa chỉ cùng thành phố với cơ quan lãnh sự (Hà Nội hoặc TP.HCM trước sáp nhập)", tag:"415.000đ"},
+        {main:"Express Premium Delivery — địa chỉ ở khu vực khác", tag:"495.000đ"},
+      ]
+    },
+  ],
+  notes:[
+    "Áp dụng cho visa nhập cảnh nhiều lần, thời gian lưu trú mỗi lần 6 tháng, có giá trị sử dụng 12 tháng.",
+    "Đại sứ quán/Lãnh sự quán có thể yêu cầu bổ sung thêm hồ sơ trong trường hợp cần thiết."
+  ]
+};
+
+/* ============ PRICE DATA (từ bảng giá) ============ */
+const DATA = [
+  {
+    continent:"Châu Mỹ",
+    countries:[
+      {name:"Mỹ", flag:"us", rows:[
+        {type:"Cấp mới", time:"Gửi hồ sơ trước ít nhất 1 tháng so với ngày khởi hành", price:7500000},
+        {type:"Renew", time:"Gửi hồ sơ trước ít nhất 1 tháng so với ngày khởi hành", price:6500000},
+      ], procedure: PROC_MY},
+      {name:"Canada", flag:"ca", rows:[{type:"Single", time:"06 – 08 tuần", price:7200000}], procedure: PROC_CANADA},
+      {name:"Mexico", flag:"mx", rows:[{type:"Single", time:"03 – 04 tuần", price:4500000}], docs:"standard"},
+      {name:"Brazil", flag:"br", rows:[
+        {type:"Single", time:"05 ngày", price:6500000},
+        {type:"Multi (công tác)", time:"7 – 15 ngày", price:8200000},
+      ], docs:"standard"},
+      {name:"Argentina", flag:"ar", rows:[{type:"—", time:"04 tuần", price:7000000}], docs:"standard"},
+      {name:"Cuba", flag:"cu", rows:[{type:"Single", time:"01 – 02 tuần", price:3700000}], docs:"easy"},
+    ]
+  },
+  {
+    continent:"Châu Úc",
+    countries:[
+      {name:"Úc", flag:"au", rows:[{type:"Single", time:"03 – 04 tuần", price:8000000}], procedure: PROC_UC},
+      {name:"New Zealand", flag:"nz", rows:[{type:"Single", time:"03 – 04 tuần", price:10000000}], docs:"hard"},
+    ]
+  },
+  {
+    continent:"Châu Âu",
+    countries:[
+      {name:"Anh", flag:"gb", rows:[
+        {type:"Multi (6 tháng)", time:"03 – 04 tuần", price:11000000},
+        {type:"Multi (2 năm)", time:"03 – 04 tuần", price:25000000},
+        {type:"Multi (5 năm)", time:"03 – 04 tuần", price:38000000},
+        {type:"Multi (10 năm)", time:"03 – 04 tuần", price:47000000},
+      ], docs:"hard", extraNote:"Visa dài hạn (2/5/10 năm) yêu cầu hồ sơ tài chính & lịch sử xuất nhập cảnh dày dặn hơn — nên chuẩn bị trước 2 tháng."},
+      {name:"Romania", flag:"ro", rows:[{type:"Single", time:"04 tuần", price:7000000}], procedure: PROC_CHAU_AU},
+      {name:"Thổ Nhĩ Kỳ", flag:"tr", rows:[
+        {type:"Single (3 tháng)", time:"15 ngày", price:7000000},
+        {type:"Single (6 tháng)", time:"15 ngày", price:9000000},
+        {type:"Evisa (Single/3 tháng)", time:"1 – 2 giờ làm việc", price:2500000},
+      ], docs:"standard", extraNote:"Bản Evisa xử lý cực nhanh, phù hợp cho du lịch ngắn ngày và không cần nộp hộ chiếu gốc."},
+      {name:"Đức", flag:"de", rows:[{type:"Single", time:"15 ngày", price:7000000}], procedure: PROC_CHAU_AU},
+      {name:"Tây Ban Nha – Ý – Hà Lan – Áo", flag:"eu", rows:[{type:"Single", time:"15 ngày", price:7000000}], procedure: PROC_CHAU_AU},
+      {name:"Pháp", flag:"fr", rows:[{type:"Single", time:"21 ngày", price:7000000}], procedure: PROC_CHAU_AU},
+      {name:"Schengen (Châu Âu)", flag:"eu", rows:[{type:"Single", time:"15 ngày", price:7000000}], procedure: PROC_CHAU_AU, extraNote:"Visa Schengen cho phép di chuyển tự do trong khối 27 nước — bắt buộc có bảo hiểm du lịch quốc tế tối thiểu 30.000 EUR."},
+    ]
+  },
+  {
+    continent:"Châu Á",
+    countries:[
+      {name:"Nhật Bản", flag:"jp", rows:[
+        {type:"Single", time:"07 ngày", price:4700000},
+        {type:"Multi", time:"07 ngày", price:8000000},
+      ], procedure: PROC_NHAT_BAN},
+      {name:"Hàn Quốc", flag:"kr", rows:[
+        {type:"Single", time:"09 – 18 ngày", price:3300000},
+        {type:"Multi (5 years)", time:"09 – 18 ngày", price:6500000},
+        {type:"Multi (10 years)", time:"18 ngày làm việc", price:7200000},
+      ], procedure: PROC_HAN_QUOC},
+      {name:"Trung Quốc", flag:"cn", rows:[
+        {type:"Single", time:"10 – 12 ngày", price:3000000},
+        {type:"Multi (6 tháng, công tác)", time:"12 ngày", price:4900000},
+        {type:"Multi (12 tháng, công tác)", time:"12 ngày", price:6500000},
+      ], procedure: PROC_TRUNG_QUOC},
+      {name:"Đài Loan", flag:"tw", rows:[{type:"Single", time:"05 – 07 ngày", price:3000000}], procedure: PROC_DAI_LOAN},
+      {name:"HongKong", flag:"hk", rows:[{type:"Single", time:"03 – 04 tuần", price:2800000}], procedure: PROC_HONGKONG},
+      {name:"Ấn Độ", flag:"in", rows:[
+        {type:"Double (30 ngày)", time:"02 – 04 ngày", price:2300000},
+        {type:"Multi (1 năm)", time:"02 – 04 ngày", price:2700000},
+        {type:"Multi (5 năm)", time:"02 – 04 ngày", price:6200000},
+      ], docs:"easy"},
+      {name:"Dubai", flag:"ae", rows:[
+        {type:"Single (30 ngày)", time:"05 – 07 ngày", price:4500000},
+        {type:"Single (60 ngày)", time:"05 – 07 ngày", price:6400000},
+        {type:"Multi (30 ngày)", time:"05 – 07 ngày", price:8200000},
+        {type:"Multi (60 ngày)", time:"05 – 07 ngày", price:11600000},
+      ], docs:"easy"},
+    ]
+  },
+  {
+    continent:"Châu Phi",
+    countries:[
+      {name:"Ai Cập", flag:"eg", rows:[{type:"Single", time:"02 – 03 tuần", price:2300000}], docs:"standard"},
+      {name:"Benin", flag:"bj", rows:[
+        {type:"Single", time:"03 – 05 ngày", price:5300000},
+        {type:"Multi (1 tháng)", time:"10 – 12 ngày", price:6200000},
+        {type:"Multi (3 tháng)", time:"10 – 12 ngày", price:6900000},
+      ], docs:"standard"},
+      {name:"Moroco", flag:"ma", rows:[{type:"Single", time:"05 – 07 ngày", price:3500000}], docs:"standard"},
+      {name:"Kenya", flag:"ke", rows:[{type:"Single", time:"05 – 08 ngày", price:4500000}], docs:"standard"},
+    ]
+  }
+];
+
+function slug(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-'); }
+
+/* ---------- renderers for detailed procedure blocks ---------- */
+function renderItem(it){
+  let subsHtml = '';
+  if(it.subs){
+    subsHtml = '<ul class="proc-subs">' + it.subs.map(s => {
+      if(typeof s === 'object' && s.head) return `<li class="sub-head" style="list-style:none;">${s.head}</li>`;
+      return `<li>${s}</li>`;
+    }).join('') + '</ul>';
+  }
+  return `
+    <div class="proc-item">
+      <div class="proc-body">
+        <div class="proc-main">${it.main}${it.tag ? `<span class="proc-tag">${it.tag}</span>` : ''}</div>
+        ${subsHtml}
+      </div>
+    </div>
+  `;
+}
+
+function renderSection(sec){
+  let inner = '';
+  if(sec.items){
+    inner = sec.items.map(renderItem).join('');
+  } else if(sec.groups){
+    inner = sec.groups.map(g => `
+      <div class="proc-group-label">${g.label}</div>
+      ${g.items.map(renderItem).join('')}
+    `).join('<div style="height:14px"></div>');
+  }
+  const footnote = sec.footnote ? `<div class="note" style="margin-top:10px;">${sec.footnote}</div>` : '';
+  return `
+    <div class="proc-section">
+      <h5>${sec.title}</h5>
+      ${inner}
+      ${footnote}
+    </div>
+  `;
+}
+
+function renderProcedureBody(proc){
+  const n = proc.sections.length;
+  const colsClass = n === 3 ? 'cols-3' : (n === 2 || n >= 4 ? 'cols-2' : '');
+  return `
+    <div class="proc-time"><span class="lbl">Thời gian xét duyệt:</span> ${proc.time}</div>
+    <div class="proc-grid ${colsClass}">
+      ${proc.sections.map(renderSection).join('')}
+    </div>
+    ${proc.notes ? `
+      <div class="proc-notes">
+        <h5>Yêu cầu & lưu ý chung</h5>
+        <ul>${proc.notes.map(n => `<li>${n}</li>`).join('')}</ul>
+      </div>` : ''}
+  `;
+}
+
+function renderProcedureWrap(proc, uid){
+  if(proc.variants){
+    const tabs = proc.variants.map((v,i) => `<button class="var-btn ${i===0?'active':''}" data-uid="${uid}" data-vidx="${i}">${v.label}</button>`).join('');
+    const bodies = proc.variants.map((v,i) => `<div class="var-body" data-uid="${uid}" data-vidx="${i}" style="${i===0?'':'display:none;'}">${renderProcedureBody(v)}</div>`).join('');
+    return `
+      <div class="proc-wrap">
+        <div class="proc-topbar">
+          <div class="proc-source"><span class="dot2"></span>Hồ sơ chi tiết theo quy định nộp hồ sơ — ${proc.label}</div>
+          <div class="variant-tabs">${tabs}</div>
+        </div>
+        ${bodies}
+      </div>
+    `;
+  }
+  return `
+    <div class="proc-wrap">
+      <div class="proc-topbar">
+        <div class="proc-source"><span class="dot2"></span>Hồ sơ chi tiết theo quy định nộp hồ sơ — ${proc.label}</div>
+      </div>
+      ${renderProcedureBody(proc)}
+    </div>
+  `;
+}
+
+/* ---------- build page ---------- */
+const nav = document.getElementById('nav');
+const main = document.getElementById('main');
+let uidCounter = 0;
+
+DATA.forEach((group, gi) => {
+  const id = 'sec-' + slug(group.continent);
+  const btn = document.createElement('button');
+  btn.textContent = group.continent;
+  btn.dataset.target = id;
+  if(gi===0) btn.classList.add('active');
+  btn.addEventListener('click', () => {
+    document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  nav.appendChild(btn);
+
+  const section = document.createElement('section');
+  section.className = 'continent-section';
+  section.id = id;
+
+  const head = document.createElement('div');
+  head.className = 'continent-head';
+  head.innerHTML = `<h2>${group.continent}</h2><span class="count">${group.countries.length} quốc gia</span>`;
+  section.appendChild(head);
+
+  group.countries.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'country-card';
+
+    const minPrice = Math.min(...c.rows.map(r=>r.price));
+    const row = document.createElement('div');
+    row.className = 'country-row';
+    row.innerHTML = `
+      <div class="flag" style="background-image:url('https://flagcdn.com/w80/${c.flag}.png')"></div>
+      <div class="name">${c.name}</div>
+      ${c.procedure ? '<span class="badge-detail">Hồ sơ chi tiết</span>' : ''}
+      <div class="price-preview">từ <b>${fmt(minPrice)}</b></div>
+      <svg class="caret" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    `;
+    row.addEventListener('click', () => {
+      card.classList.toggle('open');
+      requestAnimationFrame(() => {
+        const d = card.querySelector('.country-detail');
+        d.style.maxHeight = card.classList.contains('open') ? d.scrollHeight + 'px' : '0px';
+      });
+    });
+
+    const detail = document.createElement('div');
+    detail.className = 'country-detail';
+
+    const rowsHtml = c.rows.map(r => `
+      <tr>
+        <td>${r.type}</td>
+        <td class="time">${r.time}</td>
+        <td>${fmt(r.price)}</td>
+      </tr>
+    `).join('');
+
+    let rightPanelHtml = '';
+    if(!c.procedure){
+      const docsList = DOCS[c.docs].map(d => `<li>${d}</li>`).join('');
+      rightPanelHtml = `
+        <div class="docs">
+          <h4>${DOCS_LABEL[c.docs]}</h4>
+          <ul>${docsList}</ul>
+          ${c.extraNote ? note(c.extraNote) : ''}
+        </div>
+      `;
+    }
+
+    const uid = 'p' + (uidCounter++);
+    const procedureHtml = c.procedure ? renderProcedureWrap(c.procedure, uid) : '';
+
+    detail.innerHTML = `
+      <div class="detail-inner ${c.procedure ? 'with-procedure' : ''}">
+        <div>
+          <table class="price-table">
+            <thead><tr><th>Loại visa</th><th>Thời gian xử lý</th><th>Giá tham khảo</th></tr></thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+          ${c.extraNote && c.procedure ? note(c.extraNote) : ''}
+        </div>
+        ${rightPanelHtml}
+        ${procedureHtml}
+      </div>
+    `;
+
+    card.appendChild(row);
+    card.appendChild(detail);
+    section.appendChild(card);
+  });
+
+  main.appendChild(section);
+});
+
+/* variant tab switching */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.var-btn');
+  if(!btn) return;
+  const uid = btn.dataset.uid;
+  const vidx = btn.dataset.vidx;
+  const wrap = btn.closest('.proc-wrap');
+  wrap.querySelectorAll('.var-btn').forEach(b => b.classList.toggle('active', b.dataset.vidx === vidx));
+  wrap.querySelectorAll('.var-body').forEach(b => b.style.display = (b.dataset.vidx === vidx ? '' : 'none'));
+  // recompute open card height after content swap
+  const card = btn.closest('.country-card');
+  const d = card.querySelector('.country-detail');
+  requestAnimationFrame(() => { d.style.maxHeight = d.scrollHeight + 'px'; });
+});
+
+/* animated stat counters in hero */
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nums = document.querySelectorAll('.hero-meta .num');
+  nums.forEach(el => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    if(reduce){ el.textContent = target + suffix; return; }
+    const duration = 900;
+    const start = performance.now() + 550; // wait for hero-meta fade-in
+    function tick(now){
+      const t = Math.min(1, Math.max(0, (now - start) / duration));
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(eased * target) + (t >= 1 ? suffix : '');
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+})();
+
+/* scrollspy for nav highlight */
+const sections = Array.from(document.querySelectorAll('.continent-section'));
+const navButtons = Array.from(nav.children);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navButtons.forEach(b => b.classList.toggle('active', b.dataset.target === entry.target.id));
+    }
+  });
+}, {rootMargin: '-40% 0px -50% 0px'});
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
