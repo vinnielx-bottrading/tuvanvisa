@@ -251,14 +251,22 @@
   .hk-marker:hover{ fill:var(--teal); }
   .map-tagline{
     position:absolute; left:24px; top:20px;
-    font-family:'Fraunces',serif; font-style:italic; font-weight:600;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:800;
     font-size:clamp(16px,2.4vw,22px);
-    color:var(--teal); opacity:.4;
+    color:var(--teal); opacity:.85;
     pointer-events:none; white-space:nowrap;
     letter-spacing:.01em;
+    animation: tagline-glow 2.4s ease-in-out infinite;
+  }
+  @keyframes tagline-glow{
+    0%, 100%{ text-shadow: 0 0 2px rgba(201,168,76,.15), 0 0 0px rgba(201,168,76,0); }
+    50%{ text-shadow: 0 0 14px rgba(201,168,76,.9), 0 0 26px rgba(201,168,76,.5); }
   }
   @media(max-width:600px){
     .map-tagline{ font-size:14px; left:14px; top:12px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .map-tagline{ animation:none; text-shadow:0 0 10px rgba(201,168,76,.5); }
   }
   .map-hint{
     position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
@@ -587,7 +595,7 @@
   <aside class="side-nav" id="sideNav" aria-label="Danh sách quốc gia"></aside>
   <section class="stage">
     <div class="stage-map" id="stageMap">
-      <div class="map-tagline">Hoàng Sa, Trường Sa là của Việt Nam.</div>
+      <div class="map-tagline">Hoàng Sa, Trường Sa là của Việt Nam</div>
       <div class="map-hint">Chọn một quốc gia bên trái hoặc bấm trực tiếp lên bản đồ</div>
       <div class="map-tooltip" id="mapTooltip"></div>
       <svg version="1.1"
@@ -988,8 +996,8 @@
     <path id="zw" d="M468.52,578.226l7.755,8.757l5.946,1.513l3.984-6.248l-0.312-8.281l-6.465-3.337l-2.431,1.098l-3.62,5.524l-5.014-0.053L468.52,578.226L468.52,578.226z"/>
 </g>
 <circle id="hk" class="hk-marker" cx="676" cy="459" r="3.2"></circle>
-<circle id="hoangsa" class="isle-marker" cx="676" cy="507" r="2.6"></circle>
-<circle id="truongsa" class="isle-marker" cx="676" cy="527" r="2.6"></circle>
+<circle id="hoangsa" class="isle-marker" cx="676.6" cy="483.4" r="2.6"></circle>
+<circle id="truongsa" class="isle-marker" cx="679.4" cy="497.6" r="2.6"></circle>
 </svg>
     </div>
     <div class="stage-detail" id="stageDetail" hidden></div>
